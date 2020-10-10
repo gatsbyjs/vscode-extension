@@ -1,0 +1,117 @@
+{
+  "name": "gatsby-vscode",
+  "version": "1.0.0",
+  "description": "Gatsby VSCode extension for GraphQL support and more",
+  "publisher": "Gatsby",
+  "displayName": "Gatsby VSCode",
+  "main": "dist/extension",
+  "engines": {
+    "vscode": "^1.8.0"
+  },
+  "preview": true,
+  "extensionDependencies": [
+    "graphql.vscode-graphql"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "start": "yarn watch",
+    "watch": "yarn build --watch",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "eslint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "typecheck": "tsc -p . --noEmit",
+    "pretty-check": "prettier --check .",
+    "lint": "yarn typecheck && yarn eslint && yarn pretty-check",
+    "format": "prettier --write ."
+  },
+  "activationEvents": [
+    "workspaceContains:**/gatsby-config.{js,ts}"
+  ],
+  "contributes": {
+    "commands": [
+      {
+        "command": "gatsby.cli.develop",
+        "title": "Gatsby CLI: develop",
+        "category": "gatsby"
+      },
+      {
+        "command": "gatsby.cli.clean",
+        "title": "Gatsby CLI: clean",
+        "category": "gatsby"
+      },
+      {
+        "command": "gatsby.cli.build",
+        "title": "Gatsby CLI: build",
+        "category": "gatsby"
+      },
+      {
+        "command": "gatsby.cli.serve",
+        "title": "Gatsby CLI: serve",
+        "category": "gatsby"
+      },
+      {
+        "command": "gatsby.cli.repl",
+        "title": "Gatsby CLI: repl",
+        "category": "gatsby"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "gatsby.cli.develop",
+        "key": "ctrl+alt+g"
+      }
+    ],
+    "configuration": {
+      "properties": {
+        "gatsby.cli.runWith": {
+          "type": "string",
+          "description": "How would you like to run gatsby commands?",
+          "enum": [
+            "gatsby",
+            "yarn gatsby",
+            "./node_modules/.bin/gatsby",
+            "npx gatsby",
+            "yarn",
+            "npm"
+          ],
+          "enumDescriptions": [
+            "gatsby <command>",
+            "yarn gatsby <command>",
+            "./node_modules/.bin/gatsby <command>",
+            "npx gatsby <command>",
+            "yarn <command>",
+            "npm <command>"
+          ],
+          "default": "gatsby"
+        }
+      }
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gatsbyjs/vscode-extension.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gatsbyjs/vscode-extension/issues"
+  },
+  "homepage": "https://github.com/gatsbyjs/vscode-extension#readme",
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^4.4.0",
+    "@typescript-eslint/parser": "^4.4.0",
+    "eslint": "^7.11.0",
+    "eslint-config-prettier": "^6.12.0",
+    "jest": "^26.5.2",
+    "ovsx": "^0.1.0-next.e000fdb",
+    "prettier": "^2.1.2",
+    "typescript": "^4.0.3",
+    "vsce": "^1.81.1"
+  },
+  "dependencies": {
+    "eslint-plugin-jest": "^24.1.0",
+    "vscode": "^1.1.37",
+    "vscode-languageclient": "^6.1.3",
+    "walkdir": "^0.4.1",
+    "walker": "^1.0.7"
+  }
+}
